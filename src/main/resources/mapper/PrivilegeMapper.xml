@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.piao888.mydreamwork.mapper.PrivilegeMapper" >
+    <sql id="Base_Column_List_With_Pwd">
+        privilege_id,type
+	</sql>
+    <!--根据用户查询用户组-->
+    <select id="getByRoleId"  resultType="cn.piao888.mydreamwork.pojo.Privilege">
+        select
+        <include refid="Base_Column_List_With_Pwd" />
+        from  sys_privilege p JOIN sys_role_privilege rp ON p.privilege_id=rp.privilege_id WHERE rp.role_id=#{roleId}
+    </select>
+</mapper>

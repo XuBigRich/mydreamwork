@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.piao888.mydreamwork.mapper.RoleMapper" >
+    <sql id="Base_Column_List_With_Pwd">
+	    role_id,version,sort,pid,private String name,private String description,create_time,create_user,update_time,update_user
+	</sql>
+    <!--根据用户查询角色-->
+    <select id="getByUser"  resultType="cn.piao888.mydreamwork.pojo.Role">
+        select
+        <include refid="Base_Column_List_With_Pwd" />
+        from  sys_role r JOIN sys_user_role ur ON r.role_id=ur.role_id WHERE ur.user_id=#{userid}
+    </select>
+    <!--根据用户组查询角色-->
+    <select id="getByUserGroup"  resultType="cn.piao888.mydreamwork.pojo.Role">
+        select
+        <include refid="Base_Column_List_With_Pwd" />
+        from  sys_role r JOIN sys_usergroup_role ur ON r.role_id=ur.role_id WHERE ur.usergroup_id=#{userGroupid}
+    </select>
+    <select id="selectById"  resultType="cn.piao888.mydreamwork.pojo.Role">
+        select
+        <include refid="Base_Column_List_With_Pwd" />
+        from  sys_role r where role_id=#{role_id}
+    </select>
+</mapper>

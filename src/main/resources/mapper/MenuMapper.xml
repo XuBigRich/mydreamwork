@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.piao888.mydreamwork.mapper.MenuMapper" >
+    <sql id="Base_Column_List_With_Pwd">
+		id, account, name, birthday,password, sex, email, avatar,
+		phone, roleid,salt,
+		deptid, status,
+		createtime, version
+	</sql>
+    <select id="getResUrlsByPrivilegeId" resultType="string">
+        select url from
+        sys_menu m
+        where m.privilege_id = #{privilegeId}
+    </select>
+</mapper>
